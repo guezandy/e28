@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+  <script src="scripts.js" defer></script>
+</head>
+
+<body>
+  <h1>Paper, Scissor, Rock</h1>
+  <div id="app">
+    <select v-model="selected">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <button v-on:click="play">Play {{selected}}</button>
+    <h4>{{resultLabel}}</h4>
+    <h4>{{results.played}} game(s) played</h4>
+    <h4>{{results.tie}} game(s) tied</h4>
+    <h4>{{results.win}} game(s) won</h4>
+    <h4>{{results.lose}} games(s) lost</h4>
+  </div>
+</body>
+
+</html>

@@ -3,18 +3,39 @@
   <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
     <script src="scripts.js" defer></script>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+      .win {
+        color: green;
+      }
+      .lose {
+        color: red;
+      }
+      .tie {
+        color: blue;
+      }
+    </style>
   </head>
 
   <body>
     <h1>Paper, Scissor, Rock</h1>
-    <div id="app">
+    <div id="app" v-cloak>
       <select v-model="selected">
-        <option v-for="option in options" v-bind:value="option.value">
+        <option v-for="option in options" :value="option.value">
           {{ option.text }}
         </option>
       </select>
-      <button v-on:click="play">Play {{ selected }}</button>
-      <h4 v-if="resultLabel">{{ resultLabel }}</h4>
+      <button @click="play" @keyup.enter="play">Play {{ selected }}</button>
+
+      <div v-if="result" :class="[result]">
+        <h4 v-if="result === 'win'">You win!</h4>
+        <h4 v-if="result === 'tie'">You tied!</h4>
+        <h4 v-if="result === 'lose'">You lose!</h4>
+      </div>
+
+      <h2>Result summary</h2>
       <h4>{{ results.played }} game(s) played</h4>
       <h4>{{ results.tie }} game(s) tied</h4>
       <h4>{{ results.win }} game(s) won</h4>

@@ -2,7 +2,8 @@ console.log("eell");
 let app = new Vue({
   el: "#app",
   data: {
-    isAdmin: ["1", "2", "3"]
+    isAdmin: ["1", "2", "3"],
+    profileUrl: "1"
   }
 });
 

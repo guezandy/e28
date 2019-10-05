@@ -10,18 +10,18 @@ let app = new Vue({
       { text: SCISSOR.toUpperCase(), value: SCISSOR },
       { text: ROCK.toUpperCase(), value: ROCK }
     ],
-    selected: PAPER,  // Default to paper
-    resultLabel: '',
+    selected: PAPER, // Default to paper
+    resultLabel: "",
+    result: "",
     results: {
       played: 0,
       tie: 0,
       win: 0,
       lose: 0
     }
-
   },
   methods: {
-    play: function () {
+    play: function() {
       const options = [PAPER, SCISSOR, ROCK];
       const randomNumber = Math.floor(Math.random() * 3);
       const computerChoice = options[randomNumber];
@@ -32,7 +32,7 @@ let app = new Vue({
       // Results logic
       // Tie
       if (playerChoice === computerChoice) {
-        this.resultLabel = `Tie! Both you and computer played: ${playerChoice}`;
+        this.result = "tie";
         this.results.tie++;
         return;
       }
@@ -42,15 +42,14 @@ let app = new Vue({
         (playerChoice === SCISSOR && computerChoice === PAPER) ||
         (playerChoice === ROCK && computerChoice === SCISSOR)
       ) {
-        this.resultLabel = `You win! You played: ${playerChoice} and computer played: ${computerChoice}`;
+        this.result = "win";
         this.results.win++;
         return;
       }
       // You lose
-      this.resultLabel = `You lost! You played: ${playerChoice} and computer played: ${computerChoice}`;
+      this.result = "lose";
       this.results.lose++;
       return;
     }
   }
 });
-

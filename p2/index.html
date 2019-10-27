@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project 2</title>
+    <script src="js/scripts.js" defer></script>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Paper, Scissor, Rock</h1>
+    <div id="app" v-cloak>
+      <game-form :selected="selected" @update-selected="handleUpdateSelected" @game-play="handlePlay"></game-form>
+      <result-message :result='result'></result-message>
+      <result-summary :results='results'></result-summary>
+    </div>
+  </body>
+</html>

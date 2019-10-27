@@ -1,0 +1,4 @@
+- (https://vuejs.org/v2/guide/components-props.html#Prop-Validation)[Prop object validation]
+- (https://michaelnthiessen.com/pass-function-as-prop)[Using events instead of passing function as props]
+- Events ( https://medium.com/javascript-in-plain-english/avoid-mutating-a-prop-directly-7b127b9bca5b)
+- Trigger event when form input dropdown changes(https://forum.vuejs.org/t/how-to-trigger-an-onchange-event/11081)

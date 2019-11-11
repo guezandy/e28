@@ -116,7 +116,7 @@ export default {
               requirementsSummary.push({
                 requirement: req.name,
                 status: NOT_MET,
-                course: `Possible course: ${req.options
+                course: `Possible course(s): ${req.options
                   .filter(option => !studentsCompletedCourses.includes(option))
                   .map(option => courseNameMap[option] || "Unknown course")
                   .join(", ")}`

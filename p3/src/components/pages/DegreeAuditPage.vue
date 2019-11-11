@@ -1,7 +1,10 @@
 <template>
   <div>
     <div>
-      <b-jumbotron header="Degree Audit" lead="Understand classes taken thus far"></b-jumbotron>
+      <b-jumbotron
+        header="Degree Audit"
+        lead="Understand classes taken thus far and how they apply to certificate and masters programs"
+      ></b-jumbotron>
     </div>
     <div v-if="loaded">
       <b-card>

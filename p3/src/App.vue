@@ -57,4 +57,7 @@ export default {
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
+.nav-link a {
+  color: rgba(255, 255, 255, 0.5);
+}
 </style>

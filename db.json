@@ -29,6 +29,18 @@
       "name": "Elective courses",
       "options": [2, 3, 4]
     }]
+  }, {
+    "id": 2,
+    "name": "Backend web",
+    "requirements": [{
+      "count": 1,
+      "name": "Required courses",
+      "options": [1]
+    }, {
+      "count": 3,
+      "name": "Elective courses",
+      "options": [3, 4, 5]
+    }]
   }],
   "masters": [{
     "id": 1,

@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div>
+      <b-jumbotron
+        header="Masters Programs"
+        lead="See a breakdown of progress for each masters program"
+      ></b-jumbotron>
+    </div>
+
     <h1>Masters</h1>
     <p>Logged in as student with hypothetical student id: 1</p>
     <div v-if="masters">

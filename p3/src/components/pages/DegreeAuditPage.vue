@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div>
+      <b-jumbotron header="Degree Audit" lead="See a list of courses taken thus far"></b-jumbotron>
+    </div>
+
     <h1>Degree Audit</h1>
     <p>Logged in as student with hypothetical student id: 1</p>
     <div v-if="student">

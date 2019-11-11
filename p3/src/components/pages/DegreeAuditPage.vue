@@ -91,10 +91,12 @@ export default {
 
       this.student.completedCourses.forEach(course => {
         course["name"] = courseNameMap[course.id];
-        course["certificates"] = (courseCertificateMap[course.id] || []).join(
-          ", "
-        );
-        course["masters"] = (courseMastersMap[course.id] || []).join(", ");
+        course["certificates"] = (
+          courseCertificateMap[course.id] || ["MEETS NO REQUIREMENTS"]
+        ).join(", ");
+        course["masters"] = (
+          courseMastersMap[course.id] || ["MEETS NO REQUIREMENTS"]
+        ).join(", ");
       });
     }
     // All data has been loaded

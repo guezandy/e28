@@ -71,7 +71,7 @@
     "id": 3,
     "name": "Front-End Web Development",
     "requirements": [{
-      "count": 4,
+      "count": 15,
       "name": "Required courses",
       "options": [3, 4, 6]
     }]

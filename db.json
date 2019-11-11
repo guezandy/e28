@@ -61,7 +61,7 @@
     "requirements": [{
       "count": 1,
       "name": "Required courses",
-      "options": []
+      "options": [7]
     }, {
       "count": 3,
       "name": "Elective courses",

@@ -54,7 +54,7 @@ export default {
     this.student = studentResponse.data;
 
     if (this.student && this.certificates) {
-      const sum = this.certificates.map(certificate => {
+      this.certificateSummary = this.certificates.map(certificate => {
         // List of courses taken by the student
         const studentsCompletedCourses = this.student.completedCourses.map(
           course => course.id
@@ -62,11 +62,10 @@ export default {
         const usedCourses = [];
 
         // For each requirement in this certificate compile list of courses that satisfy it
-        const requirementsSummary = {};
+        const requirementsSummary = [];
 
         for (let i = 0; i < certificate.requirements.length; i++) {
           const req = certificate.requirements[i];
-          requirementsSummary[req.id] = [];
           // List of courses of the options that satisfy this req that have been taken by the student
           for (let j = 0; j < req.options; j++) {
             const course = req.options[j];
@@ -76,7 +75,7 @@ export default {
               // Student has taken the course
               studentsCompletedCourses.includes(course)
             ) {
-              requirementsSummary[req.id].push({
+              requirementsSummary.push({
                 requirement: req.name,
                 course: course
               });
@@ -86,10 +85,6 @@ export default {
         }
         return requirementsSummary;
       });
-      console.log(sum);
-      console.log(this.certificates);
-      this.certificateSummary = sum;
-      console.log(this.certificateSummary);
     }
   }
 };

@@ -6,6 +6,14 @@
       "id": 1,
       "grade": "A",
       "semeseter": "Fall 2018"
+    }, {
+      "id": 20,
+      "grade": "A",
+      "semeseter": "Fall 2018"
+    }, {
+      "id": 21,
+      "grade": "A",
+      "semeseter": "Fall 2018"
     }]
   }],
   "courses": [{
@@ -13,7 +21,7 @@
       "name": "Course 1"
     },
     {
-      "id": 2,
+      "id": 20,
       "name": "Course 2"
     }
   ],
@@ -27,7 +35,7 @@
     }, {
       "count": 4,
       "name": "Elective courses",
-      "options": [2, 3, 4]
+      "options": [20, 3, 4]
     }]
   }, {
     "id": 2,
@@ -35,11 +43,11 @@
     "requirements": [{
       "count": 1,
       "name": "Required courses",
-      "options": [1]
+      "options": [21]
     }, {
       "count": 3,
       "name": "Elective courses",
-      "options": [3, 4, 5]
+      "options": [20, 4, 5]
     }]
   }],
   "masters": [{

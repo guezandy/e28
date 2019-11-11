@@ -1,21 +1,14 @@
 <template>
   <div id="app">
-    <img alt="BlackJack" src="./assets/logo.png" />
+    <img alt="CoursePlanner" src="./assets/logo.png" />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-const axios = require("axios");
-
 export default {
   name: "app",
-  components: {},
-  async mounted() {
-    const products = await axios.get(
-      "https://my-json-server.typicode.com/guezandy/e28/students"
-    );
-    console.log(products);
-  }
+  components: {}
 };
 </script>
 

@@ -3,7 +3,7 @@
     <div>
       <b-jumbotron
         header="Certificate programs"
-        lead="See a breakdown of progress for each certificate program"
+        lead="See a breakdown of progress for each certificate program(s)"
       ></b-jumbotron>
     </div>
     <div v-if="loaded">

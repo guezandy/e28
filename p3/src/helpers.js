@@ -19,13 +19,16 @@ export const programProgressJson = (student, courses, programs) => {
     for (let i = 0; i < program.requirements.length; i++) {
       const req = program.requirements[i];
       // List of courses of the options that satisfy this req that have been taken by the student
+      let remainingCourses = req.count;
       for (let j = 0; j < req.options.length; j++) {
         const course = req.options[j];
         if (
           // If course is not used already
           !usedCourses.includes(course) &&
           // Student has taken the course
-          studentsCompletedCourses.includes(course)
+          studentsCompletedCourses.includes(course) &&
+          // Student already met the correct number of courses for this req
+          remainingCourses > 0
         ) {
           requirementsSummary.push({
             requirement: req.name,
@@ -33,10 +36,11 @@ export const programProgressJson = (student, courses, programs) => {
             course: courseNameMap[course] || "Unknown course"
           });
           usedCourses.push(course);
+          remainingCourses = remainingCourses - 1;
         }
       }
       // Just to have a visual enter "Missing requirement" rows into this list
-      while (requirementsSummary.length < req.count) {
+      while (remainingCourses > 0) {
         requirementsSummary.push({
           requirement: req.name,
           status: NOT_MET,
@@ -45,6 +49,7 @@ export const programProgressJson = (student, courses, programs) => {
             .map(option => courseNameMap[option] || "Unknown course")
             .join(", ")}`
         });
+        remainingCourses = remainingCourses - 1;
       }
     }
     summary[program.id] = {

@@ -1,11 +1,13 @@
+/**
+ * Basically merge program requirements with courses students taken to return
+ * a json to be used by the UI
+ **/
 export const programProgressJson = (student, courses, programs) => {
   const NOT_MET = "Not satisfied";
 
   const courseNameMap = {};
   courses.forEach(course => (courseNameMap[course.id] = course.name));
 
-  // Basically merge certificate requirements with courses students taken to return
-  // A json to be used by the UI
   return programs.reduce((summary, program) => {
     // List of courses taken by the student
     const studentsCompletedCourses = student.completedCourses.map(

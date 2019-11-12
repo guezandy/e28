@@ -20,11 +20,11 @@
       "semeseter": "Summer 2019"
     }, {
       "id": "CSCI E-91",
-      "grade": "A",
+      "grade": "B",
       "semeseter": "Fall 2019"
     }, {
       "id": "DGMD E-28",
-      "grade": "B",
+      "grade": "A",
       "semeseter": "Fall 2019"
     }]
   }],
@@ -46,6 +46,42 @@
   }, {
     "id": "DGMD E-28",
     "name": "Single-Page Applications & Interfaces with Vue.js"
+  }, {
+    "id": "CSCI E-8",
+    "name": "Web GIS: Technologies and Applications"
+  }, {
+    "id": "CSCI E-11",
+    "name": "Opportunities of Big Data, the Internet of Things, and Cybersecurity"
+  }, {
+    "id": "CSCI E-14A",
+    "name": "Building Interactive Web Applications for Data Analysis"
+  }, {
+    "id": "CSCI E-20",
+    "name": "Discrete Mathematics for Computer Science"
+  }, {
+    "id": "CSCI E-26",
+    "name": "Introduction to C, Unix/Linux Programming, and Web Interfaces"
+  }, {
+    "id": "CSCI E-31",
+    "name": "Web Application Development using Node.js"
+  }, {
+    "id": "CSCI E-49",
+    "name": "Cloud Security"
+  }, {
+    "id": "CSCI E-40",
+    "name": "Communication Protocols and Internet Architectures"
+  }, {
+    "id": "CSCI E-97",
+    "name": "Software Design: Principles, Models, and Patterns"
+  }, {
+    "id": "CSCI E-28",
+    "name": "Unix/Linux Systems Programming"
+  }, {
+    "id": "CSCI E-61",
+    "name": "Systems Programming and Machine Organization"
+  }, {
+    "id": "CSCI E-599",
+    "name": "Software Engineering Capstone"
   }],
   "certificates": [{
     "id": 1,
@@ -53,7 +89,7 @@
     "requirements": [{
       "count": 5,
       "name": "Web development courses",
-      "options": ["CSCI E-15", "CSCI E-33A", "CSCI E-3", "DGMD E-28"]
+      "options": ["CSCI E-15", "CSCI E-33A", "CSCI E-3", "DGMD E-28", "CSCI E-31"]
     }]
   }, {
     "id": 2,
@@ -61,11 +97,11 @@
     "requirements": [{
       "count": 1,
       "name": "Required courses",
-      "options": [7]
+      "options": ["CSCI E-14A", "CSCI E-26"]
     }, {
       "count": 3,
       "name": "Elective courses",
-      "options": ["CSCI E-15", "CSCI E-33A", "DGMD E-28"]
+      "options": ["CSCI E-15", "CSCI E-33A", "DGMD E-28", "CSCI E-14A", "CSCI E-31"]
     }]
   }, {
     "id": 3,
@@ -73,7 +109,7 @@
     "requirements": [{
       "count": 4,
       "name": "Required courses",
-      "options": ["CSCI E-33A", "CSCI E-3", "DGMD E-28"]
+      "options": ["CSCI E-33A", "CSCI E-3", "DGMD E-28", "CSCI E-14A", "CSCI E-31"]
     }]
   }],
   "masters": [{
@@ -82,35 +118,35 @@
     "requirements": [{
       "count": 1,
       "name": "Theoretical Foundations",
-      "options": ["CSCI E-124"]
+      "options": ["CSCI E-124", "CSCI E-20"]
     }, {
       "count": 1,
       "name": "Data communications",
-      "options": []
+      "options": ["CSCI E-49", "CSCI E-40"]
     }, {
       "count": 1,
       "name": "Cloud Computing",
-      "options": ["CSCI E-91"]
+      "options": ["CSCI E-91", "CSCI E-49"]
     }, {
       "count": 1,
       "name": "Systems Programming",
-      "options": []
+      "options": ["CSCI E-28", "CSCI E-61"]
     }, {
       "count": 1,
       "name": "Software Design course",
-      "options": []
+      "options": ["CSCI E-97"]
     }, {
       "count": 1,
       "name": "Application development for web",
-      "options": ["CSCI E-15", "CSCI E-33A", "DGMD E-28"]
+      "options": ["CSCI E-15", "CSCI E-33A", "DGMD E-28", "CSCI E-31"]
     }, {
       "count": 5,
       "name": "Elective courses",
-      "options": ["CSCI E-15", "CSCI E-33A", "CSCI E-3", "DGMD E-28"]
+      "options": ["CSCI E-15", "CSCI E-33A", "DGMD E-28", "CSCI E-8", "CSCI E-11", "CSCI E-14A", "CSCI E-49"]
     }, {
       "count": 1,
       "name": "Capstone",
-      "options": []
+      "options": ["CSCI E-599"]
     }]
   }]
 }

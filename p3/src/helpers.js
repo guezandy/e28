@@ -1,6 +1,7 @@
 /**
  * Basically merge program requirements with courses students taken to return
- * a json to be used by the UI
+ * a json object of the progress of a student in a program - the returned value
+ * is meant to be used by a table component
  **/
 export const programProgressJson = (student, courses, programs) => {
   const NOT_MET = "Not satisfied";

@@ -34,6 +34,7 @@
 <script>
 export default {
   name: "ProgressTracker",
+  // Generic "program" used to handle both certificate programs and masters programs
   props: ["programs", "programSummary"]
 };
 </script>

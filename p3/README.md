@@ -38,6 +38,10 @@ Of note:
   }
 ```
 
+Local storage is used to mirror a logging in experience. When landing on the site you are prompted with a login form that drops a `user_id` in localStorage. This is used throughout the app to keep track of the current user logged in.
+Also added a logout feature that clears this `user_id` from localStorage
+
+
 ## Full Database can be found here
 https://my-json-server.typicode.com/guezandy/e28/
 

@@ -26,84 +26,95 @@ export default {
   name: "DegreeAuditPage",
   data: function() {
     return {
+      // List of certificate programs offered
       certificates: null,
-      student: null,
-      masters: null,
+      // List of all courses offered
       courses: null,
-      loaded: false
+      // Has the data loaded
+      loaded: false,
+      // List of masters programs
+      masters: null,
+      // Information on the student and classes the student has taken
+      student: null,
+      studentId: localStorage.getItem("user_id")
     };
   },
   async mounted() {
-    // Get list of all certificates and information about the certificates
-    const certificatesResponse = await axios.get(
-      "https://my-json-server.typicode.com/guezandy/e28/certificates"
-    );
-    this.certificates = certificatesResponse.data;
+    if (this.studentId) {
+      // Get list of classes taken by the student
+      const studentResponse = await axios.get(
+        `https://my-json-server.typicode.com/guezandy/e28/students/${this.studentId}`
+      );
+      this.student = studentResponse.data;
 
-    // Get list of all masters and information about the masters
-    const mastersResponse = await axios.get(
-      "https://my-json-server.typicode.com/guezandy/e28/masters"
-    );
-    this.masters = mastersResponse.data;
+      // Get list of all certificates and information about the certificates
+      const certificatesResponse = await axios.get(
+        "https://my-json-server.typicode.com/guezandy/e28/certificates"
+      );
+      this.certificates = certificatesResponse.data;
 
-    // Get list of classes taken by the student
-    const studentResponse = await axios.get(
-      "https://my-json-server.typicode.com/guezandy/e28/students/1"
-    );
-    this.student = studentResponse.data;
+      // Get list of all masters and information about the masters
+      const mastersResponse = await axios.get(
+        "https://my-json-server.typicode.com/guezandy/e28/masters"
+      );
+      this.masters = mastersResponse.data;
 
-    // Get list of courses offered at the univeristy
-    const coursesResponse = await axios.get(
-      "https://my-json-server.typicode.com/guezandy/e28/courses"
-    );
-    this.courses = coursesResponse.data;
+      // Get list of courses offered at the univeristy
+      const coursesResponse = await axios.get(
+        "https://my-json-server.typicode.com/guezandy/e28/courses"
+      );
+      this.courses = coursesResponse.data;
 
-    // Organize data for the UI
-    if (this.student && this.certificates && this.courses && this.masters) {
-      // Map course id to course name
-      const courseNameMap = {};
-      this.courses.forEach(course => (courseNameMap[course.id] = course.name));
+      // Organize data for the UI
+      if (this.student && this.certificates && this.courses && this.masters) {
+        // Map course id to course name
+        const courseNameMap = {};
+        this.courses.forEach(
+          course => (courseNameMap[course.id] = course.name)
+        );
 
-      // Map course id to certificate satisfied
-      const courseCertificateMap = {};
-      this.certificates.forEach(certificate => {
-        certificate.requirements.forEach(req => {
-          req.options.forEach(option => {
-            if (!Object.keys(courseCertificateMap).includes(`${option}`)) {
-              courseCertificateMap[option] = [];
-            }
-            courseCertificateMap[option].push(
-              `${certificate.name} (${req.name})`
-            );
+        // Map course id to certificate(s) satisfied
+        const courseCertificateMap = {};
+        this.certificates.forEach(certificate => {
+          certificate.requirements.forEach(req => {
+            req.options.forEach(option => {
+              if (!Object.keys(courseCertificateMap).includes(`${option}`)) {
+                courseCertificateMap[option] = [];
+              }
+              courseCertificateMap[option].push(
+                `${certificate.name} (${req.name})`
+              );
+            });
           });
         });
-      });
 
-      // Map course id to masters satisfied
-      const courseMastersMap = {};
-      this.masters.forEach(master => {
-        master.requirements.forEach(req => {
-          req.options.forEach(option => {
-            if (!Object.keys(courseMastersMap).includes(`${option}`)) {
-              courseMastersMap[option] = [];
-            }
-            courseMastersMap[option].push(`${master.name} (${req.name})`);
+        // Map course id to masters satisfied
+        const courseMastersMap = {};
+        this.masters.forEach(master => {
+          master.requirements.forEach(req => {
+            req.options.forEach(option => {
+              if (!Object.keys(courseMastersMap).includes(`${option}`)) {
+                courseMastersMap[option] = [];
+              }
+              courseMastersMap[option].push(`${master.name} (${req.name})`);
+            });
           });
         });
-      });
 
-      this.student.completedCourses.forEach(course => {
-        course["name"] = courseNameMap[course.id];
-        course["certificates"] = (
-          courseCertificateMap[course.id] || ["MEETS NO REQUIREMENTS"]
-        ).join(", ");
-        course["masters"] = (
-          courseMastersMap[course.id] || ["MEETS NO REQUIREMENTS"]
-        ).join(", ");
-      });
+        // Organize data for the table - add "MEETS NO REQ" if this class does not meet any reqs
+        this.student.completedCourses.forEach(course => {
+          course["name"] = courseNameMap[course.id];
+          course["certificates"] = (
+            courseCertificateMap[course.id] || ["MEETS NO REQUIREMENTS"]
+          ).join(", ");
+          course["masters"] = (
+            courseMastersMap[course.id] || ["MEETS NO REQUIREMENTS"]
+          ).join(", ");
+        });
+      }
+      // All data has been loaded
+      this.loaded = true;
     }
-    // All data has been loaded
-    this.loaded = true;
   }
 };
 </script>

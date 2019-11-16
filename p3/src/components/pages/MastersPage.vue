@@ -25,41 +25,50 @@ export default {
   components: { ProgressTracker },
   data: function() {
     return {
+      // List of all courses offered
+      courses: null,
+      // Has all the data been loaded
+      loaded: false,
+      // Masters programs offered
       masters: null,
-      student: null,
+      // Summary of students progress against the Masters programs
       mastersSummary: null,
-      loaded: false
+      // Data about the logged in student
+      student: null,
+      studentId: localStorage.getItem("user_id")
     };
   },
   async mounted() {
-    // Get list of all masters and information about the masters
-    const mastersResponse = await axios.get(
-      "https://my-json-server.typicode.com/guezandy/e28/masters"
-    );
-    this.masters = mastersResponse.data;
-
-    // Get list of classes taken by the student
-    const studentResponse = await axios.get(
-      "https://my-json-server.typicode.com/guezandy/e28/students/1"
-    );
-    this.student = studentResponse.data;
-
-    // Get list of courses offered at the univeristy
-    const coursesResponse = await axios.get(
-      "https://my-json-server.typicode.com/guezandy/e28/courses"
-    );
-    this.courses = coursesResponse.data;
-
-    // Organize data for the UI
-    if (this.student && this.masters && this.courses) {
-      this.mastersSummary = programProgressJson(
-        this.student,
-        this.courses,
-        this.masters
+    if (this.studentId) {
+      // Get list of classes taken by the student
+      const studentResponse = await axios.get(
+        `https://my-json-server.typicode.com/guezandy/e28/students/${this.studentId}`
       );
+      this.student = studentResponse.data;
+
+      // Get list of all masters and information about the masters
+      const mastersResponse = await axios.get(
+        "https://my-json-server.typicode.com/guezandy/e28/masters"
+      );
+      this.masters = mastersResponse.data;
+
+      // Get list of courses offered at the univeristy
+      const coursesResponse = await axios.get(
+        "https://my-json-server.typicode.com/guezandy/e28/courses"
+      );
+      this.courses = coursesResponse.data;
+
+      // Organize data for the UI
+      if (this.student && this.masters && this.courses) {
+        this.mastersSummary = programProgressJson(
+          this.student,
+          this.courses,
+          this.masters
+        );
+      }
+      // All data has been loaded
+      this.loaded = true;
     }
-    // All data has been loaded
-    this.loaded = true;
   }
 };
 </script>

@@ -1,35 +1,47 @@
-# p3
+# Project 3
++ By: Andrew Rodrigez
++ Production URL: <http://p3.squareinches.com>
 
-## Project setup
+## Outline of features
+*Background*
+
+I am working towards my Masters in Software Engineering and recently found out I took a class that doesn't count towards the degree.
+
+This is my passive aggressive response to that - as I think there should be better tooling at HES to figure out which classes met which degree requirements.
+
+*Features*
+Landing on the site - should mirror someone who has logged in using their HES credentials. They are shown 3 pages:
+* Degree Audit page - shows list of classes taken thus far and what certificates/degrees the classes satisfy.
+* Certificate Program page - showing progress on certain certificate programs
+* Masters program page - showing progress on a certain masters program
+
+One of the trickier things was how to implement the NoSQL data model to represent a `Certificate` or `Masters` program and its requirements. I did it as follows
+
+Of note:
+* Requirements is an array
+* Count is the number of courses needed for this requirement
+* Options is a list of courses that satisfy this requirement
 
 ```
-yarn install
+{
+    "id": 2,
+    "name": "Backend-End Web Development",
+    "requirements": [{
+      "count": 1,
+      "name": "Required courses",
+      "options": ["CSCI E-14A", "CSCI E-26"]
+    }, {
+      "count": 3,
+      "name": "Elective courses",
+      "options": ["CSCI E-15", "CSCI E-33A", "DGMD E-28", "CSCI E-14A", "CSCI E-31"]
+    }]
+  }
 ```
 
-### Compiles and hot-reloads for development
+## Full Database can be found here
+https://my-json-server.typicode.com/guezandy/e28/
 
-```
-yarn serve
-```
 
-### Compiles and minifies for production
+## Outside resources
+[Used bootstrap vue for UI components](https://bootstrap-vue.js.org/docs)
 
-```
-yarn build
-```
-
-### Lints and fixes files
-
-```
-yarn lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-Resources
-Used bootstrap vue for UI components
-https://bootstrap-vue.js.org/docs
-
-TODO navbar link colors

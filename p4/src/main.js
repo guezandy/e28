@@ -15,7 +15,7 @@ import MastersPage from "./components/pages/MastersPage.vue";
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
-Vue.use(Vuelidate)
+Vue.use(Vuelidate);
 Vue.config.productionTip = false;
 
 const routes = [{

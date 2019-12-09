@@ -44,7 +44,8 @@ Also added a logout feature that clears this `user_id` from localStorage
 ## Final project requirements
 * Store data in Vuex is used all across the application 
 * At least one unit test: p4/tests/unit/NavBar.spec.js
-
+* E2E tests: p4/tests/e2e/specs
+* Add vuelidate to login page: p4/src/components/pages/LoginPage.vue
 
 ## Full Database can be found here
 https://my-json-server.typicode.com/guezandy/e28/

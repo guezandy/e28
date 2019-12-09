@@ -2,6 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import VueRouter from "vue-router";
 import BootstrapVue from "bootstrap-vue";
+import Vuelidate from 'vuelidate'
+
 import store from './store'
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -13,6 +15,7 @@ import MastersPage from "./components/pages/MastersPage.vue";
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
+Vue.use(Vuelidate)
 Vue.config.productionTip = false;
 
 const routes = [{

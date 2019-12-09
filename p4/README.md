@@ -41,6 +41,10 @@ Of note:
 Local storage is used to mirror a logging in experience. When landing on the site you are prompted with a login form that drops a `user_id` in localStorage. This is used throughout the app to keep track of the current user logged in.
 Also added a logout feature that clears this `user_id` from localStorage
 
+## Final project requirements
+* Store data in Vuex is used all across the application 
+* At least one unit test: p4/tests/unit/NavBar.spec.js
+
 
 ## Full Database can be found here
 https://my-json-server.typicode.com/guezandy/e28/

@@ -24,12 +24,13 @@
               type="email"
               placeholder="Enter email"
             ></b-form-input>
+            <div class="form-feedback-error" v-if="!$v.loginForm.email.required">Email is required.</div>
           </b-form-group>
 
           <b-form-group id="input-group-2" label="Password:" label-for="input-2">
             <b-form-input id="input-2" v-model="loginForm.password" placeholder="Password"></b-form-input>
           </b-form-group>
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-button data-test="login-buttom" type="submit" variant="primary">Submit</b-button>
         </b-form>
       </b-jumbotron>
     </div>
@@ -37,24 +38,46 @@
 </template>
 
 <script>
+import { required } from "vuelidate/lib/validators";
+
 export default {
   name: "LoginForm",
   data: function() {
     return {
       loginForm: {
-        email: "",
-        password: ""
-      }
+        email: undefined,
+        password: undefined
+      },
+      formHasErrors: false
     };
+  },
+  validations: {
+    loginForm: {
+      email: {
+        required
+      },
+      password: {
+        required
+      }
+    }
+  },
+  watch: {
+    "$v.$anyError": function() {
+      console.log("Doing this", this.$v.$anyError);
+      this.formHasErrors = this.$v.$anyError;
+    }
   },
   methods: {
     // Handle login for submissions
     onLogin(event) {
-      event.preventDefault();
-      // Do nothing with the form inputs just add add user_id to local store
-      localStorage.setItem("user_id", 1);
-      // Refresh the current logged in users data
-      this.$store.dispatch("setStudent");
+      console.log("has errors", this.formHasErrors);
+      if (!this.formHasErrors) {
+        event.preventDefault();
+        // Do nothing with the form inputs just add add user_id to local store
+        localStorage.setItem("user_id", 1);
+        // Refresh the current logged in users data
+        this.$store.dispatch("setStudent");
+      }
     }
   }
 };

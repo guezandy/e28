@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-test="certificate-page">
     <div>
       <b-jumbotron
         header="Certificate programs"

@@ -7,13 +7,16 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item href="#">
-          <router-link :to="{ name: 'home' }">Degree Audit</router-link>
+          <router-link :to="{ name: 'home' }" data-test="degree-audit-link">Degree Audit</router-link>
         </b-nav-item>
         <b-nav-item href="#">
-          <router-link :to="{ name: 'certificates' }">Certificate Programs</router-link>
+          <router-link
+            :to="{ name: 'certificates' }"
+            data-test="certificate-link"
+          >Certificate Programs</router-link>
         </b-nav-item>
         <b-nav-item href="#">
-          <router-link :to="{ name: 'masters' }">Masters Programs</router-link>
+          <router-link :to="{ name: 'masters' }" data-test="masters-link">Masters Programs</router-link>
         </b-nav-item>
       </b-navbar-nav>
 

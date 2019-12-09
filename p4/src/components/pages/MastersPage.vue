@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-test="masters-page-div">
     <div>
       <b-jumbotron
         header="Masters programs"

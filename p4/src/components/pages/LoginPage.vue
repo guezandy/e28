@@ -9,7 +9,7 @@
     <div>
       <b-jumbotron
         header="Welcome to HES Progress tracker"
-        lead="Login to begin. Note this is just a dummy login for that doesn't work. Clicking submit just stores a static user_id in local storage"
+        lead="Login to begin. Note: This login doesn't actually work - it just expects a valid email and any password of correct length"
       >
         <b-form @submit="onLogin">
           <b-form-group
@@ -20,15 +20,33 @@
           >
             <b-form-input
               id="input-1"
-              v-model="loginForm.email"
+              v-model="$v.loginForm.email.$model"
               type="email"
               placeholder="Enter email"
+              required
             ></b-form-input>
             <div class="form-feedback-error" v-if="!$v.loginForm.email.required">Email is required.</div>
+            <div
+              class="form-feedback-error"
+              v-if="!$v.loginForm.email.minLength"
+            >Email must have longer length</div>
           </b-form-group>
 
           <b-form-group id="input-group-2" label="Password:" label-for="input-2">
-            <b-form-input id="input-2" v-model="loginForm.password" placeholder="Password"></b-form-input>
+            <b-form-input
+              id="input-2"
+              v-model="loginForm.password"
+              placeholder="Password"
+              type="password"
+            ></b-form-input>
+            <div
+              class="form-feedback-error"
+              v-if="!$v.loginForm.password.required"
+            >Password is required.</div>
+            <div
+              class="form-feedback-error"
+              v-if="!$v.loginForm.password.minLength"
+            >Password must have longer length</div>
           </b-form-group>
           <b-button data-test="login-buttom" type="submit" variant="primary">Submit</b-button>
         </b-form>
@@ -38,15 +56,15 @@
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
+import { minLength, required } from "vuelidate/lib/validators";
 
 export default {
   name: "LoginForm",
   data: function() {
     return {
       loginForm: {
-        email: undefined,
-        password: undefined
+        email: "",
+        password: ""
       },
       formHasErrors: false
     };
@@ -54,25 +72,25 @@ export default {
   validations: {
     loginForm: {
       email: {
-        required
+        required,
+        minLength: minLength(5)
       },
       password: {
-        required
+        required,
+        minLength: minLength(5)
       }
     }
   },
   watch: {
     "$v.$anyError": function() {
-      console.log("Doing this", this.$v.$anyError);
       this.formHasErrors = this.$v.$anyError;
     }
   },
   methods: {
     // Handle login for submissions
     onLogin(event) {
-      console.log("has errors", this.formHasErrors);
+      event.preventDefault();
       if (!this.formHasErrors) {
-        event.preventDefault();
         // Do nothing with the form inputs just add add user_id to local store
         localStorage.setItem("user_id", 1);
         // Refresh the current logged in users data
